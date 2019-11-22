@@ -1,0 +1,71 @@
+<div class="wrapper">
+  <div class="small-nav">
+    <div class="small-nav-info">
+          <ul>
+            <li><p>19th,November 2019</p></li>
+            <li><a routerLink="/settings">Sign in</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+     
+    </div>
+    <div class="small-nav-social">
+      <a href="#">
+        <fa-icon [icon]="faFacebook"></fa-icon>
+      </a>
+      <a href="">
+        <fa-icon [icon]="faInstagram"></fa-icon>
+      </a>  
+      <a href="">
+        <fa-icon [icon]="faTwitter"></fa-icon>
+      </a>  
+        
+      
+    </div>
+  </div>
+  <div class="big-nav">
+    <div class="big-nav-heading">
+      <h2>DANK FOOTBALL | OUTSIDE THE BOX</h2>
+    </div>
+    <div class="big-nav-menu-bar"> 
+      <fa-icon (click)="toggleFullNavigation()" [icon]="faBars"></fa-icon>
+    </div>
+    <div class="big-nav-links">
+      <ul>
+        <li><a routerLink="/home">HOME</a></li>
+        <li><a routerLink="/feed">BLOG FEED</a></li>
+        <li><a href="#"><fa-icon [icon]="faSearch"></fa-icon></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fullpage-nav" id="fullpage-navigation">
+    <div class="fullpage-nav-social-close"> 
+      <div class="fullpage-nav-social">
+        <ul>
+          <li><a href="#"><fa-icon [icon]="faFacebook" size="lg"></fa-icon></a></li>
+          <li><a href="#"><fa-icon [icon]="faInstagram" size="lg"></fa-icon></a></li>
+          <li><a href="#"><fa-icon [icon]="faTwitter" size="lg"></fa-icon></a></li>
+        </ul>
+      </div>  
+      <div class="fullpage-nav-close">
+        <fa-icon (click)="toggleFullNavigation()" [icon]="faTimes" size="2x"></fa-icon>
+      </div>
+    </div>
+    <div class="fullpage-nav-links">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Blog Feed</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Sign in</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#"><fa-icon [icon]="faSearch"></fa-icon></a></li>  
+      </ul>
+    </div>
+  </div>
+
+  <div class="main">
+    <router-outlet></router-outlet>   
+  </div>
+</div>
+
+
