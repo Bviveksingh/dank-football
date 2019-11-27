@@ -3,7 +3,8 @@
     <div class="small-nav-info">
           <ul>
             <li><p>19th,November 2019</p></li>
-            <li><a routerLink="/settings">Sign in</a></li>
+            <!-- <li><a routerLink="/settings">Sign in</a></li> -->
+            <li><a (click)="loadSignIn = !loadSignIn">Sign in</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
           </ul>
@@ -25,14 +26,13 @@
   </div>
   <div class="big-nav">
     <div class="big-nav-heading">
-      <h2>DANK FOOTBALL | OUTSIDE THE BOX</h2>
+      <a routerLink="">DANK FOOTBALL | OUTSIDE THE BOX</a>  
     </div>
     <div class="big-nav-menu-bar"> 
       <fa-icon (click)="toggleFullNavigation()" [icon]="faBars"></fa-icon>
     </div>
     <div class="big-nav-links">
       <ul>
-        <li><a routerLink="/homepage">HOME</a></li>
         <li><a routerLink="/feed">BLOG FEED</a></li>
         <li><a href="#"><fa-icon [icon]="faSearch"></fa-icon></a></li>
       </ul>
@@ -62,10 +62,89 @@
       </ul>
     </div>
   </div>
-
   <div class="main">
     <router-outlet></router-outlet>   
   </div>
 </div>
+
+
+<div class="sign-in-register-container" *ngIf="loadSignIn">
+    <div class="sign-in-register-main">
+        <div class="sign-in-register-close" (click)="loadSignIn=!loadSignIn">
+          <fa-icon [icon]="faTimes" size="2x"></fa-icon>
+        </div>
+        <div class="sign-in-register-header">
+            <h2>{{signInForm? "Sign In" : "Register"}}</h2>
+          </div>
+          <div class="sign-in-register-body">
+            <div *ngIf="signInForm" class="sign-in-body">
+              <form action="">
+                <div class="input-container" id="signin-email">
+                  <label for="email">Email</label>
+                  <input type="text" name="email">
+                </div>
+                <div class="input-container" id="signin-password">
+                  <label for="password">Password</label>  
+                  <input type="password" name="password">
+                </div>
+
+                <div class="button-container" id="signin-button">
+                    <button>Sign In</button>
+                </div>
+                
+              </form>
+            </div>
+            <div *ngIf="!signInForm" class="register-body">
+              <form action="">
+                  <div class="input-container" id="firstname">
+                    <label for="firstname">First Name</label>
+                    <input type="text" name="firstname">
+
+                  </div>
+                  <div class="input-container" id="lastname">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" name="lastname">
+                  </div>
+                  <div class="input-container" id="register-email">
+                    <label for="email">Email</label>
+                    <input type="email" name="email">
+                    
+                  </div>
+                  <div class="input-container" id="register-password">
+                    <label for="password">Password</label>
+                    <input type="password" name="password">
+
+                  </div>
+                  <div class="input-container" id="confirm-password">
+                      <label for="password">Confirm Password</label>
+                      <input type="password" name="password">
+  
+                    </div>
+                   <div class="button-container" id="register-button">
+                      <button>Register</button>
+                   </div>                 
+                  
+              </form>
+
+            </div>
+          </div>
+          <div class="sign-in-register-footer">
+            <div *ngIf="signInForm" class="sign-in-footer">
+              <div class="sign-in-footer-container">
+                <h2 class="sign-in-register-footer-heading">Not a Member?</h2>
+                <h2 class="sign-in-register-footer-link" (click)="signInForm = !signInForm">Register</h2>
+              </div>
+            </div>
+            <div *ngIf="!signInForm" class="register-footer">
+              <div class="register-footer-container">
+                  <h2 class="sign-in-register-footer-heading">Already a member?</h2>
+                  <h2 class="sign-in-register-footer-link" (click)="signInForm = !signInForm" >Sign in</h2>
+              </div>
+
+            </div>            
+          </div> 
+    </div>
+    
+  </div>
 
 

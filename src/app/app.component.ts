@@ -16,6 +16,9 @@ export class AppComponent{
   faBars = faBars;
   faTimes = faTimes;
   showFullpageNav: boolean = false;
+  loadSignIn:boolean = false;
+  signInForm: boolean = true;
+  
 
   toggleFullNavigation(){
     let fullpageNav = document.getElementById("fullpage-navigation");

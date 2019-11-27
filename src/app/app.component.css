@@ -73,10 +73,13 @@
     margin-left:30px;
 }
 
-.big-nav-heading h2{
+.big-nav-heading a{
+    color: #181818;
+    text-decoration: none;
     font-size: 1.2rem;
     font-weight: 500;
     opacity: 78%;
+    cursor: pointer;
 }
 .big-nav-links{
     grid-area: big-nav-links;
@@ -113,6 +116,187 @@
 }
 
 
+.sign-in-register-container{
+    position: fixed;
+    width:100%;
+    height: 100%;
+    left: 0;
+    top:0;
+    background: linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8));
+    display: grid;
+    justify-content: center;
+    padding-top:20px;
+    padding-bottom:20px;
+    font-family: 'Roboto', sans-serif;
+    overflow-y: scroll;
+
+}
+
+.sign-in-register-main{
+    width:100%;
+    height:80%;
+    background-color: white;
+    display: grid;
+    padding:20px 70px;
+    grid-template-areas:
+    "sign-in-register-close"
+    "sign-in-register-header"
+    "sign-in-register-body"
+    "sign-in-register-footer" 
+    ;
+    grid-template-rows: 0.1fr 0.2fr 1fr 0.4fr;
+    row-gap: 20px;
+}
+
+.sign-in-register-close{
+    justify-self: flex-end;
+    /* margin-right:10px; */
+    /* margin-top:10px; */
+    grid-area: sign-in-register-close;
+    cursor: pointer;
+    
+}
+
+.sign-in-register-header{
+    grid-area: sign-in-register-header;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-in-register-header h2{
+    font-size:1.5rem;
+    color:#F80000;
+}
+
+.sign-in-register-body{
+    margin-top:20px;
+    grid-area:sign-in-register-body;
+    display: grid;
+    align-items: center;
+
+}
+.button-container{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container button{
+    border-radius: 12px;
+    padding:10px 30px;
+    background: #181818;
+    color: whitesmoke;
+}
+
+.sign-in-body form{
+    display: grid;
+    grid-template-areas:
+    "signin-email"
+    "signin-password"
+    "signin-btn" 
+    ;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    row-gap: 40px;
+}
+
+#signin-email{
+    grid-area: signin-email;
+}
+
+#signin-password{
+    grid-area: signin-password;
+}
+
+#signin-button{
+    grid-area: signin-btn;
+}
+
+
+.register-body form {
+    display: grid;
+    grid-template-areas:
+    "first-name last-name"
+    "register-email register-email"
+    "register-password register-password"
+    "confirm-password confirm-password"
+    "register-btn register-btn" 
+    ;
+    column-gap: 20px;
+    row-gap: 20px;
+
+}
+
+#first-name{
+    grid-area: first-name;
+}
+#last-name{
+    grid-area: last-name;
+}
+#register-email{
+    grid-area:register-email;
+}
+#register-password{
+    grid-area:register-password;
+}
+#confirm-password{
+    grid-area: confirm-password;
+}
+#register-button{
+    grid-area:register-btn;
+}
+
+.input-container{
+    display:grid;
+    grid-template-areas:
+    "label"
+    "input-element" 
+    ;
+    row-gap: 10px;
+}
+
+.input-container label{
+    grid-area: label;
+    font-size:1.1rem;
+    font-weight: bolder;
+}
+.input-container input{
+    grid-area: input-element;
+    width:100%;
+    padding: 10px 15px;
+}
+
+.sign-in-register-footer{
+    grid-area:sign-in-register-footer;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.sign-in-footer-container,.register-footer-container{
+    display: grid;
+    grid-template-columns: 1fr 0.5fr;
+    grid-template-areas: "footer-heading footer-link";
+    column-gap: 10px;
+}
+
+
+.sign-in-register-footer-heading{
+    grid-area: footer-heading;
+    font-size: 0.8rem;
+}
+
+.sign-in-register-footer-link{
+    font-size:0.8rem;
+    color: blue;
+    cursor: pointer;
+}
+
+.sign-in-register-footer-link{
+    grid-area:footer-link;
+}
 
 .main{
     grid-area:body;
@@ -142,7 +326,7 @@
         justify-self: stretch;
         margin-left:0px;
     }
-    .big-nav-heading h2{
+    .big-nav-heading a{
         font-size:5vw;
         color:white;
         opacity: 100%;
