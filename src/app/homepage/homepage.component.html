@@ -1,41 +1,41 @@
 <div class="homepage-container">
     <div class="homepage-popular-container">
         <div class="popular-first-grid">
-            <div class="homepage-popular-info-container" id="first-popular-container">
-                <img src="../../assets/images/8.jpg" alt="first-image">
+            <div [routerLink]="['/blog/',blogs[0].id]" class="homepage-popular-info-container" id="first-popular-container">
+                <img [src]="blogs[0].featured_image" alt="first-image">
                 <div class="popular-description">
-                    <h3>Why Brian Clough is the GOAT?</h3>
-                    <h6>Vivek Singh Bisht - May 27th,2016</h6>
+                    <h3>{{blogs[0].title}}</h3>
+                    <h6>{{blogs[0].authorname}} - May 27th,2016</h6>
                 </div>
             </div>
         </div>
         <div class="popular-second-grid">
-            <div class="homepage-popular-info-container small-popular-containers" id="second-popular-container">
-                <img src="../../assets/images/2.jpg" alt="second-image">
+            <div [routerLink]="['/blog/',blogs[1].id]" class="homepage-popular-info-container small-popular-containers" id="second-popular-container">
+                <img [src]="blogs[1].featured_image" alt="second-image">
                 <div class="popular-description">
-                    <h3>Mo Salah: One-season wonder?</h3>
-                    <h6>Vivek Singh Bisht - July 28th,2019</h6>
+                    <h3>{{blogs[1].title}}</h3>
+                    <h6>{{blogs[1].authorname}} - July 28th,2019</h6>
                 </div>
             </div>
-            <div class="homepage-popular-info-container small-popular-containers" id="third-popular-container">
-                <img src="../../assets/images/3.jpg" alt="third-image">
+            <div [routerLink]="['/blog/',blogs[2].id]" class="homepage-popular-info-container small-popular-containers" id="third-popular-container">
+                <img [src]="blogs[2].featured_image" alt="third-image">
                 <div class="popular-description">
-                    <h3>Mo Salah: One-season wonder?</h3>
-                    <h6>Vivek Singh Bisht - July 28th,2019</h6>
+                    <h3>{{blogs[2].title}}</h3>
+                    <h6>{{blogs[2].authorname}} - July 28th,2019</h6>
                 </div>
             </div>
-            <div class="homepage-popular-info-container small-popular-containers" id="fourth-popular-container">
-                <img src="../../assets/images/5.jpg" alt="fourth-image">
+            <div [routerLink]="['/blog/',blogs[3].id]" class="homepage-popular-info-container small-popular-containers" id="fourth-popular-container">
+                <img [src]="blogs[3].featured_image" alt="fourth-image">
                 <div class="popular-description">
-                    <h3>Mo Salah: One-season wonder?</h3>
-                    <h6>Vivek Singh Bisht - July 28th,2019</h6>
+                    <h3>{{blogs[3].title}}</h3>
+                    <h6>{{blogs[3].authorname}} - July 28th,2019</h6>
                 </div>
             </div>
-            <div class="homepage-popular-info-container small-popular-containers" id="fifth-popular-container"> 
-                <img src="../../assets/images/8.jpg" alt="fifth-image">
+            <div [routerLink]="['/blog/',blogs[4].id]" class="homepage-popular-info-container small-popular-containers" id="fifth-popular-container"> 
+                <img [src]="blogs[4].featured_image" alt="fifth-image">
                 <div class="popular-description">
-                    <h3>Mo Salah: One-season wonder?</h3>
-                    <h6>Vivek Singh Bisht - July 28th,2019</h6>
+                    <h3>{{blogs[4].title}}</h3>
+                    <h6>{{blogs[4].authorname}} - July 28th,2019</h6>
                 </div>
             </div>
         </div>

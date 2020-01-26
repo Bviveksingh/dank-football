@@ -1,0 +1,72 @@
+<div class="blog-container">
+    <div class="blog-main">
+        <div class="blog-image">
+            <img [src]="blog_featuredImage">
+        </div>
+        <div class="blog-title">
+            <h3> {{blog_title}}</h3>
+        </div>
+        <div class="blog-details">
+            <div class="blog-details-user">
+                <h4 [routerLink]="['/profile/',user_id]">{{blog_authorname}} - {{blog_created_date}}</h4>
+            </div>
+            <div class="blog-upvotes">
+                <div class="blog-upvotes-icon">
+                    <button *ngIf="!already_upvoted" (click)="add_upvote()" style="margin-top:10px;" mat-flat-button>
+                        <mat-icon>thumb_up</mat-icon>
+                    </button>
+                    <button *ngIf="already_upvoted" (click)="downVote()" style="margin-top:10px;" mat-flat-button>
+                        <mat-icon>thumb_down</mat-icon>
+                    </button>
+                </div>
+                <div class="blog-upvotes-number">
+                    <h3>{{upvotes}}</h3>
+                </div>
+            </div>
+            <!-- <div class="blog-details-date">
+                <h4>26-01-2019</h4>
+            </div> -->
+        </div>
+
+        <div class="blog-content">
+            <p [innerHTML]="blog_content|sanitizeHtml"></p>
+        </div>
+        <div class="blog-tags">
+            <mat-chip-list>
+                <mat-chip *ngFor="let tag of blog_tags">{{tag.name}}</mat-chip>
+            </mat-chip-list>
+        </div>
+
+    </div>
+   
+</div>
+
+
+
+
+<!-- <div class="blog-container">
+    <div class="preview-blog-backButton">
+        <button mat-button color="black"><mat-icon style="margin-right:5px;">keyboard_backspace</mat-icon>Back to edit</button>
+    </div>
+    <div class="blog-main">
+        <div class="blog-image">
+            <img src="../../assets/images/1.jpg">
+        </div>
+        <div class="blog-title">
+            <h3>Mo Salah: One-time wonder?</h3>
+        </div>
+        <div class="blog-details">
+            <div class="blog-details-user">
+                <h4>Vivek Singh Bisht</h4>
+            </div>
+            <div class="blog-details-date">
+                <h4>26-01-2019</h4>
+            </div>
+        </div>
+
+        <div class="blog-content">
+            <p>Nunc sollicitudin quam at bibendum sollicitudin. Ut posuere elit ut neque porttitor, sed fringilla est mollis. Quisque bibendum sodales commodo. Nullam nisi tellus, sagittis a lacinia quis, sagittis et arcu.</p>
+        </div>
+    </div>
+   
+</div> -->

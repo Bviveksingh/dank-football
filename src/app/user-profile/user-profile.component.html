@@ -1,0 +1,17 @@
+<div class="user-profile-container">
+    <div class="user-profile-blogs-container">
+        <div class="blog-container" *ngFor="let blog of blogs">
+                <div [routerLink]="['/blog/', blog.id]" class="image-container">
+                    <img [src]="blog.featured_image" alt="first-image">
+                </div>
+                <div [routerLink]="['/blog/', blog.id]" class="title-container">
+                    <h3>{{blog.title}} </h3>
+                </div>
+                <div class="details-container">
+                    <h6>{{blog.updated_at}}</h6>
+                </div> 
+                    
+                
+        </div>
+    </div>
+</div>

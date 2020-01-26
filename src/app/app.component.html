@@ -3,10 +3,11 @@
     <div class="small-nav-info">
           <ul>
             <li><p>19th,November 2019</p></li>
-            <!-- <li><a routerLink="/settings">Sign in</a></li> -->
-            <li><a (click)="loadSignIn = !loadSignIn">Sign in</a></li>
+            <li><a routerLink="/login" *ngIf="!userLoggedIn" >Sign in</a></li>
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
+            <li><a (click)="signOut()" *ngIf="userLoggedIn">Sign out</a> </li>
+            <li><a routerLink="/settings" *ngIf="userLoggedIn">Account Settings</a> </li>
           </ul>
      
     </div>
@@ -33,6 +34,7 @@
     </div>
     <div class="big-nav-links">
       <ul>
+        <li><a routerLink="/write_blog">WRITE BLOG</a></li>
         <li><a routerLink="/feed">BLOG FEED</a></li>
         <li><a href="#"><fa-icon [icon]="faSearch"></fa-icon></a></li>
       </ul>
@@ -68,24 +70,24 @@
 </div>
 
 
-<div class="sign-in-register-container" *ngIf="loadSignIn">
+<!-- <div class="sign-in-register-container" *ngIf="loadSignInModal">
     <div class="sign-in-register-main">
-        <div class="sign-in-register-close" (click)="loadSignIn=!loadSignIn">
+        <div class="sign-in-register-close" (click)="loadSignInModal=!loadSignInModal">
           <fa-icon [icon]="faTimes" size="2x"></fa-icon>
         </div>
         <div class="sign-in-register-header">
-            <h2>{{signInForm? "Sign In" : "Register"}}</h2>
-          </div>
+            <h2>{{loadSignInForm? "Sign-in" : "Register"}}</h2>
+          </div>  
           <div class="sign-in-register-body">
-            <div *ngIf="signInForm" class="sign-in-body">
-              <form action="">
+            <div *ngIf="loadSignInForm" class="sign-in-body">
+              <form [formGroup]="signinForm" >
                 <div class="input-container" id="signin-email">
                   <label for="email">Email</label>
-                  <input type="text" name="email">
+                  <input formControlName="signInEmail" type="text" name="email">
                 </div>
                 <div class="input-container" id="signin-password">
                   <label for="password">Password</label>  
-                  <input type="password" name="password">
+                  <input formControlName="signInPassword" type="password" name="password">
                 </div>
 
                 <div class="button-container" id="signin-button">
@@ -94,34 +96,51 @@
                 
               </form>
             </div>
-            <div *ngIf="!signInForm" class="register-body">
-              <form action="">
+            <div *ngIf="!loadSignInForm" class="register-body">
+              <form [formGroup]="registerForm" (ngSubmit)="register(registerForm)">
                   <div class="input-container" id="firstname">
-                    <label for="firstname">First Name</label>
-                    <input type="text" name="firstname">
-
+                    <label>First Name</label>
+                    <input type="text" formControlName="firstname" />
+                    <div *ngIf="isRegisterFormSubmitted && f.firstname.errors" >
+                        <div *ngIf="f.firstname.errors.required">First Name is required</div>
+                    </div>
                   </div>
                   <div class="input-container" id="lastname">
-                    <label for="lastname">Last Name</label>
-                    <input type="text" name="lastname">
+                    <label>Last Name</label>
+                    <input type="text" formControlName="lastname" />
+                    <div *ngIf="isRegisterFormSubmitted && f.lastname.errors" >
+                        <div *ngIf="f.lastname.errors.required">Last Name is required</div>
+                    </div>
                   </div>
                   <div class="input-container" id="register-email">
-                    <label for="email">Email</label>
-                    <input type="email" name="email">
+                    <label>Email</label>
+                    <input type="email" formControlName="email" />
+                    <div *ngIf="isRegisterFormSubmitted && f.email.errors" >
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    </div>
                     
                   </div>
                   <div class="input-container" id="register-password">
-                    <label for="password">Password</label>
-                    <input type="password" name="password">
+                    <label>Password</label>
+                    <input type="text" formControlName="password" />
+                    <div *ngIf="isRegisterFormSubmitted && f.password.errors" >
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
 
                   </div>
                   <div class="input-container" id="confirm-password">
-                      <label for="password">Confirm Password</label>
-                      <input type="password" name="password">
-  
+                    <label>Confirm Password</label>
+                    <input type="text" formControlName="confirmpassword" />
+                    <div *ngIf="isRegisterFormSubmitted && f.confirmpassword.errors" >
+                        <div *ngIf="f.confirmpassword.errors.required">Confirm password is required</div>
+                        <div *ngIf="f.confirmpassword.errors.mustMatch">Passwords must match</div>
                     </div>
+  
+                  </div>
                    <div class="button-container" id="register-button">
-                      <button>Register</button>
+                      <button type="submit">Register</button>
                    </div>                 
                   
               </form>
@@ -129,16 +148,16 @@
             </div>
           </div>
           <div class="sign-in-register-footer">
-            <div *ngIf="signInForm" class="sign-in-footer">
+            <div *ngIf="loadSignInForm" class="sign-in-footer">
               <div class="sign-in-footer-container">
                 <h2 class="sign-in-register-footer-heading">Not a Member?</h2>
-                <h2 class="sign-in-register-footer-link" (click)="signInForm = !signInForm">Register</h2>
+                <h2 class="sign-in-register-footer-link" (click)="toggleSigninRegister()">Register</h2>
               </div>
             </div>
-            <div *ngIf="!signInForm" class="register-footer">
+            <div *ngIf="!loadSignInForm" class="register-footer">
               <div class="register-footer-container">
                   <h2 class="sign-in-register-footer-heading">Already a member?</h2>
-                  <h2 class="sign-in-register-footer-link" (click)="signInForm = !signInForm" >Sign in</h2>
+                  <h2 class="sign-in-register-footer-link" (click)="toggleSigninRegister()" >Sign in</h2>
               </div>
 
             </div>            
@@ -146,5 +165,5 @@
     </div>
     
   </div>
-
+ -->
 

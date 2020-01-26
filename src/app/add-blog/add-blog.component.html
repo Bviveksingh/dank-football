@@ -1,0 +1,98 @@
+<div class="add_blog-container" *ngIf="!showPreview">
+    <div class="add_blog-content">
+        <div class="add_blog-content-title">
+            <input type="text" [(ngModel)]="title" placeholder="Add Title...">
+        </div>
+        <div class="add_blog-content-body">
+            <ejs-richtexteditor [(value)]="blog_content"  placeholder="Add Paragraph..."></ejs-richtexteditor>
+        </div>
+        
+    </div>
+    <div class="add_blog-properties">
+        <!-- <div class="add_blog-prop author-name">
+            <label for="author-name">Author Name</label>
+            <input type="text" [(ngModel)]="authorname" name="author-name">
+        </div> -->
+        <div class="add_blog-prop featured-image">
+            <label>Featured Image</label>
+            <button mat-raised-button color="primary" (click)="imageInput.click()" >
+                Upload Image
+            </button>
+            <input #imageInput
+                type="file"
+                accept="image/*"
+                hidden
+                (change)="processFile(imageInput)">
+            <img [src]="previewImage" *ngIf="previewImage">
+        </div>
+        <div class="add_blog-prop tags">
+            <label>Tags</label>
+            <tag-component></tag-component>
+        </div>
+        <div class="add_blog-prop publish_preview">
+            <button mat-raised-button id="publish-button" (click)="submitBlog()">Publish</button>
+            <button mat-raised-button id="preview-button" (click)="showPreview = !showPreview">Preview</button>
+        </div>
+    </div>
+  
+</div>
+
+
+<div class="preview-blog-container" *ngIf="showPreview">
+    <div class="preview-blog-backButton">
+        <button mat-button color="black" (click)="showPreview=!showPreview"><mat-icon style="margin-right:5px;">keyboard_backspace</mat-icon>Back to edit</button>
+    </div>
+    <div class="preview-blog-main">
+        <div class="preview-blog-image">
+            <img [src]="previewImage" alt="Preview cover image goes here">
+        </div>
+        <div class="preview-blog-title">
+            <h3>{{title}}</h3>
+        </div>
+        <div class="preview-blog-details">
+            <div class="preview-blog-details-user">
+                <h4>{{authorname}}</h4>
+            </div>
+            <!-- <div class="preview-blog-details-date">
+                <h4>26-01-2019</h4>
+            </div> -->
+        </div>
+
+        <div class="preview-blog-content">
+            <p [innerHTML]="blog_content|sanitizeHtml"></p>
+        </div>
+    </div>
+   
+</div>
+
+
+
+<!-- <div class="preview-blog-container" *ngIf="!showPreview">
+    <div class="preview-blog-backButton">
+        <button mat-button color="black"><mat-icon style="margin-right:5px;">keyboard_backspace</mat-icon>Back to edit</button>
+    </div>
+    <div class="preview-blog-main">
+        <div class="preview-blog-image">
+            <img src="../../assets/images/1.jpg">
+        </div>
+        <div class="preview-blog-title">
+            <h3>Mo Salah: One-time wonder?</h3>
+        </div>
+        <div class="preview-blog-details">
+            <div class="preview-blog-details-user">
+                <h4>Vivek Singh Bisht</h4>
+            </div>
+            <div class="preview-blog-details-date">
+                <h4>26-01-2019</h4>
+            </div>
+        </div>
+
+        <div class="preview-blog-content">
+            <p>Nunc sollicitudin quam at bibendum sollicitudin. Ut posuere elit ut neque porttitor, sed fringilla est mollis. Quisque bibendum sodales commodo. Nullam nisi tellus, sagittis a lacinia quis, sagittis et arcu.</p>
+        </div>
+    </div>
+   
+</div> -->
+
+
+

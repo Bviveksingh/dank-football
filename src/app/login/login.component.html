@@ -1,0 +1,100 @@
+
+<div class="sign-in-register-container" *ngIf="loadSignInModal">
+    <div class="sign-in-register-main">
+        <div class="sign-in-register-header">
+            <h2>{{loadSignInForm? "Sign-in" : "Register"}}</h2>
+          </div>  
+          <div class="sign-in-register-body">
+            <div *ngIf="loadSignInForm" class="sign-in-body">
+              <form [formGroup]="signInForm" (ngSubmit)="signIn(signInForm)">
+                <div class="input-container" id="signin-email">
+                  <label for="email">Email</label>
+                  <input formControlName="email" type="text" name="email">
+                  <div *ngIf="isSignInFormSubmitted && f2.email.errors" >
+                    <div *ngIf="f2.email.errors.required">Email is required</div>
+                </div>
+                </div>
+                <div class="input-container" id="signin-password">
+                  <label for="password">Password</label>  
+                  <input formControlName="password" type="password" name="password">
+                  <div *ngIf="isSignInFormSubmitted && f2.password.errors" >
+                    <div *ngIf="f2.password.errors.required">Password is required</div>
+                  </div>
+                </div>
+               
+
+                <div class="button-container" id="signin-button">
+                    <button type="submit">Sign In</button>
+                </div>
+            
+              </form>
+            </div>
+            <div *ngIf="!loadSignInForm" class="register-body">
+              <form [formGroup]="registerForm" (ngSubmit)="register(registerForm)">
+                  <div class="input-container" id="firstname">
+                    <label>First Name</label>
+                    <input type="text" formControlName="firstname" />
+                    <div *ngIf="isRegisterFormSubmitted && f.firstname.errors" >
+                        <div *ngIf="f.firstname.errors.required">First Name is required</div>
+                    </div>
+                  </div>
+                  <div class="input-container" id="lastname">
+                    <label>Last Name</label>
+                    <input type="text" formControlName="lastname" />
+                    <div *ngIf="isRegisterFormSubmitted && f.lastname.errors" >
+                        <div *ngIf="f.lastname.errors.required">Last Name is required</div>
+                    </div>
+                  </div>
+                  <div class="input-container" id="register-email">
+                    <label>Email</label>
+                    <input type="email" formControlName="email" />
+                    <div *ngIf="isRegisterFormSubmitted && f.email.errors" >
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                    
+                  </div>
+                  <div class="input-container" id="register-password">
+                    <label>Password</label>
+                    <input type="password" formControlName="password" />
+                    <div *ngIf="isRegisterFormSubmitted && f.password.errors" >
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                    </div>
+
+                  </div>
+                  <div class="input-container" id="confirm-password">
+                    <label>Confirm Password</label>
+                    <input type="password" formControlName="confirmpassword" />
+                    <div *ngIf="isRegisterFormSubmitted && f.confirmpassword.errors" >
+                        <div *ngIf="f.confirmpassword.errors.required">Confirm password is required</div>
+                        <div *ngIf="f.confirmpassword.errors.mustMatch">Passwords must match</div>
+                    </div>
+  
+                  </div>
+                   <div class="button-container" id="register-button">
+                      <button type="submit">Register</button>
+                   </div>                 
+                  
+              </form>
+
+            </div>
+          </div>
+          <div class="sign-in-register-footer">
+            <div *ngIf="loadSignInForm" class="sign-in-footer">
+              <div class="sign-in-footer-container">
+                <h2 class="sign-in-register-footer-heading">Not a Member?</h2>
+                <h2 class="sign-in-register-footer-link" (click)="toggleSigninRegister()">Register</h2>
+              </div>
+            </div>
+            <div *ngIf="!loadSignInForm" class="register-footer">
+              <div class="register-footer-container">
+                  <h2 class="sign-in-register-footer-heading">Already a member?</h2>
+                  <h2 class="sign-in-register-footer-link" (click)="toggleSigninRegister()" >Sign in</h2>
+              </div>
+
+            </div>            
+          </div> 
+    </div>
+    
+  </div>

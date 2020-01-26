@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {faEdit} from '@fortawesome/free-solid-svg-icons';
+import { FormGroup, FormControl } from '@angular/forms';
+
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -8,6 +10,10 @@ import {faEdit} from '@fortawesome/free-solid-svg-icons';
 export class AccountComponent implements OnInit {
   faEdit = faEdit;
   constructor() { }
+
+  accountInfoForm = new FormGroup({
+    
+  });
 
   ngOnInit() {
   }

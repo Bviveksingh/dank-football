@@ -71,10 +71,11 @@
     grid-area:name;
 }
 
-.feed-profile-info-name-container h2{
+.feed-profile-info-name-container a{
     font-size: 2vw;
     font-weight:500;
     color: #181818;
+    cursor: pointer;
 }
 
 .feed-profile-info-followers-container{
@@ -150,7 +151,7 @@
     margin-top:10px;
     font-size: 1.4vw;
 }
-
+    
 .feed-right-container{
     grid-area:right-container;
     display: grid;

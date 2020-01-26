@@ -7,63 +7,27 @@
             </div>
             <div class="feed-profile-info-container">
                 <div class="feed-profile-info-name-container">
-                    <h2>Vivek Singh Bisht</h2>
+                    <a (click)="openProfile()">{{user.firstname}} {{user.lastname}}</a>    
                 </div>
                 <div class="feed-profile-info-followers-container">
                     <h3>Followers</h3>
-                    <h6>21</h6>
+                    <h6>{{user.followers}}</h6>
                 </div>
                 <div class="feed-profile-info-following-container">
                     <h3>Following</h3>
-                    <h6>208</h6>
+                    <h6>{{user.following}}</h6>
                 </div>
             </div>
         </div>
     </div>
     <div class="feed-middle-container">
-        <div class="feed-info-container">
-            <div class="feed-info-image-container">
-                <img src="../../assets/images/2.jpg" alt="first-image">
-            </div>
-            <div class="feed-info-description-container">
-                <h3>Mo Salah: One-time wonder?  </h3>
-                <h6>Vivek Singh Bisht - August 31st, 2018</h6>
-                <p>Nunc sollicitudin quam at bibendum sollicitudin. Ut posuere elit ut neque porttitor, sed fringilla est mollis.
-                Quisque bibendum sodales commodo. Nullam nisi tellus, sagittis a lacinia quis, sagittis et arcu.
-                </p>
-            </div>
-        </div>
-        <div class="feed-info-container">
-                <div class="feed-info-image-container">
-                    <img src="../../assets/images/5.jpg" alt="first-image">
+        <div class="feed-info-container" *ngFor="let blog of blogs">
+                <div [routerLink]="['/blog/', blog.id]" class="feed-info-image-container">
+                    <img [src]="blog.featured_image" alt="first-image">
                 </div>
                 <div class="feed-info-description-container">
-                    <h3>Mo Salah: One-time wonder?</h3>
-                    <h6>Vivek Singh Bisht - August 31st, 2018</h6>
-                    <p>Nunc sollicitudin quam at bibendum sollicitudin. Ut posuere elit ut neque porttitor, sed fringilla est mollis.
-                    Quisque bibendum sodales commodo. Nullam nisi tellus, sagittis a lacinia quis, sagittis et arcu.
-                    </p>
-                </div>
-        </div>
-        <div class="feed-info-container">
-                <div class="feed-info-image-container">
-                    <img src="../../assets/images/6.jpg" alt="first-image">
-                </div>
-                <div class="feed-info-description-container">
-                    <h3>Mo Salah: One-time wonder?</h3>
-                    <h6>Vivek Singh Bisht - August 31st, 2018</h6>
-                    <p>Nunc sollicitudin quam at bibendum sollicitudin. Ut posuere elit ut neque porttitor, sed fringilla est mollis.
-                    Quisque bibendum sodales commodo. Nullam nisi tellus, sagittis a lacinia quis, sagittis et arcu.
-                    </p>
-                </div>
-        </div>
-        <div class="feed-info-container">
-                <div class="feed-info-image-container">
-                    <img src="../../assets/images/1.jpg" alt="first-image">
-                </div>
-                <div class="feed-info-description-container">
-                    <h3>Mo Salah: One-time wonder?</h3>
-                    <h6>Vivek Singh Bisht - August 31st, 2018</h6>
+                    <h3 style="cursor: pointer;" [routerLink]="['/blog/',blog.id]">{{blog.title}}</h3>
+                    <h6  style="cursor: pointer;"[routerLink]="['/profile/',user.id]">{{blog.authorname}} - August 31st, 2018</h6>
                     <p>Nunc sollicitudin quam at bibendum sollicitudin. Ut posuere elit ut neque porttitor, sed fringilla est mollis.
                     Quisque bibendum sodales commodo. Nullam nisi tellus, sagittis a lacinia quis, sagittis et arcu.
                     </p>
